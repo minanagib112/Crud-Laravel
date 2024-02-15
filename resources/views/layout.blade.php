@@ -34,9 +34,19 @@
                                 aria-expanded="false">
                                 Users
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item active" href="{{ url('users') }}">List</a></li>
-                                <li><a class="dropdown-item" href="{{ url('users/create') }}">New User</a></li>
+                            <ul class="dropdown-menu ">
+                                <li><a class="dropdown-item" href="{{ url('users') }}">Users List</a></li>
+                                <li><a class="dropdown-item" href="{{ url('users/create') }}">Create User</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Posts
+                            </a>
+                            <ul class="dropdown-menu ">
+                                <li><a class="dropdown-item" href="{{ url('posts') }}">Posts List</a></li>
+                                <li><a class="dropdown-item" href="{{ url('posts/create') }}">Create Post</a></li>
                             </ul>
                         </li>
                     </ul>

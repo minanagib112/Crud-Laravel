@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Post;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::select('id', 'name', 'email')->paginate(5);
         return view('users.index', ['users' => $users]);
     }
     public function create()
@@ -27,10 +28,10 @@ class UserController extends Controller
         );
         return redirect(url('/users'));
     }
-    public function show($userId)
+    public function show(User $user)
     {
-        $user = User::findorfail($userId);
-        return view('users.show', ['user' => $user]);
+        $posts = Post::select('title')->where('user_id', $user->id)->get();
+        return view('users.show', ['user' => $user, 'posts' => $posts]);
     }
     public function edit($userId)
     {
@@ -49,10 +50,10 @@ class UserController extends Controller
         );
         return redirect(url('/users/'));
     }
-    public function destroy($userId)
+    public function delete($userId)
     {
-        $user = User::findorfail($userId);
+        $user = User::find($userId);
         $user->delete();
-        return redirect(url('/users/'));
+        return redirect(url('/users/'))->with('success', 'User deleted successfully');
     }
 }

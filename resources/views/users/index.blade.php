@@ -20,12 +20,13 @@
                         <form action="{{ url('users/' . $user->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger ">Delete</button>
+                            <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
                         </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
-
     </table>
+    <div class="d-flex justify-content-center"> {{ $users->links() }}</div>
 @endsection
