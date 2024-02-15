@@ -6,6 +6,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Number of Posts</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -15,6 +16,7 @@
                     <td>{{ $user->id }}</td>
                     <td><a href="{{ url('users/' . $user->id) }}">{{ $user->name }}</a></td>
                     <td>{{ $user->email }}</td>
+                    <td>{{ $user->posts->count() < 1 ? 0 : $user->posts->count() }}</a></td>
                     <td class="d-flex justify-content-center gap-5">
                         <a class="btn btn-success" href="{{ url('users/' . $user->id . '/edit') }}">Edit</a>
                         <form action="{{ url('users/' . $user->id) }}" method="POST">

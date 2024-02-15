@@ -30,7 +30,7 @@ class UserController extends Controller
     }
     public function show(User $user)
     {
-        $posts = Post::select('title')->where('user_id', $user->id)->get();
+        $posts = Post::select('title', 'id')->where('user_id', $user->id)->get();
         return view('users.show', ['user' => $user, 'posts' => $posts]);
     }
     public function edit($userId)
